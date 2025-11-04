@@ -1,0 +1,6 @@
+github.com/llm-inferno/queue-analysis v0.2.0 h1:KLY6BVuo78w1UYJKdfX/H/VwMD2hvsFxmrqlMkoi5gk=
+github.com/llm-inferno/queue-analysis v0.2.0/go.mod h1:dGvVS0L3+xVC403UTzedpjkQChTBYQbx1LlSEuSSJhs=
+golang.org/x/tools v0.37.0 h1:DVSRzp7FwePZW356yEAChSdNcQo6Nsp+fex1SUW09lE=
+golang.org/x/tools v0.37.0/go.mod h1:MBN5QPQtLMHVdvsbtarmTNukZDdgwdwlO5qGacAzF0w=
+gonum.org/v1/gonum v0.16.0 h1:5+ul4Swaf3ESvrOnidPp4GZbzf0mxVQpDCYUQE7OJfk=
+gonum.org/v1/gonum v0.16.0/go.mod h1:fef3am4MQ93R2HHpKnLk4/Tbh/s0+wqD5nfa6Pnwy4E=

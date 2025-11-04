@@ -1,0 +1,68 @@
+{
+    "name": "sample_dataset",
+    "data": [
+        {
+            "requestRate": 27.16,
+            "inputTokens": 64,
+            "outputTokens": 64,
+            "avgWaitTime": 0.0,
+            "avgPrefillTime": 18.05,
+            "avgITLTime": 7.50,
+            "maxBatchSize": 512
+        },
+        {
+            "requestRate": 52.06,
+            "inputTokens": 64,
+            "outputTokens": 64,
+            "avgWaitTime": 0.0,
+            "avgPrefillTime": 19.08,
+            "avgITLTime": 8.06,
+            "maxBatchSize": 512
+        },
+        {
+            "requestRate": 76.95,
+            "inputTokens": 64,
+            "outputTokens": 64,
+            "avgWaitTime": 0.0,
+            "avgPrefillTime": 20.47,
+            "avgITLTime": 8.63,
+            "maxBatchSize": 512
+        },
+        {
+            "requestRate": 101.85,
+            "inputTokens": 64,
+            "outputTokens": 64,
+            "avgWaitTime": 0.0,
+            "avgPrefillTime": 22.01,
+            "avgITLTime": 9.27,
+            "maxBatchSize": 512
+        },
+        {
+            "requestRate": 126.73,
+            "inputTokens": 64,
+            "outputTokens": 64,
+            "avgWaitTime": 0.0,
+            "avgPrefillTime": 24.37,
+            "avgITLTime": 10.16,
+            "maxBatchSize": 512
+        },
+        {
+            "requestRate": 151.83,
+            "inputTokens": 64,
+            "outputTokens": 64,
+            "avgWaitTime": 0.0,
+            "avgPrefillTime": 28.43,
+            "avgITLTime": 11.47,
+            "maxBatchSize": 512
+        },
+        {
+            "requestRate": 176.50,
+            "inputTokens": 64,
+            "outputTokens": 64,
+            "avgWaitTime": 0.0,
+            "avgPrefillTime": 40.56,
+            "avgITLTime": 15.57,
+            "maxBatchSize": 512
+        }
+    ]
+}
