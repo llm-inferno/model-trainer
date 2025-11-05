@@ -8,13 +8,18 @@ import (
 	"gonum.org/v1/gonum/optimize"
 )
 
+// optimizer to perform parameter estimation
 type Optimizer struct {
+	// initial values of model parameters
 	InitParms *config.ModelParams
 }
 
+// result of optimization
 type OptimizationResult struct {
+	//optimal values of model parameters
 	OptimizedParms *config.ModelParams
-	Cost           float64
+	// mean relative squared error (MRSE) due to optimal parameters
+	MRSE float64
 }
 
 func NewOptimizer(initParms *config.ModelParams) *Optimizer {
@@ -23,6 +28,7 @@ func NewOptimizer(initParms *config.ModelParams) *Optimizer {
 	}
 }
 
+// optimize model parameters to fit the data set using the given model function
 func (opt *Optimizer) Optimize(dataSet *config.DataSet, model ModelFunction) (*OptimizationResult, error) {
 	// prepare data
 	xData, yData := utils.CreateInOutVarsFromDataSet(dataSet)
@@ -32,11 +38,11 @@ func (opt *Optimizer) Optimize(dataSet *config.DataSet, model ModelFunction) (*O
 	problem := optimize.Problem{
 		Func: func(p []float64) float64 {
 			params := utils.CreateModelParamsFromParmsSlice(p)
-			return Cost(params, xData, yData, model)
+			return LossFunction(params, xData, yData, model)
 		},
 	}
 
-	// Run the optimization
+	// Run the optimizer
 	settings := &optimize.Settings{
 		GradientThreshold: 1e-6,
 		MajorIterations:   1000,
@@ -46,11 +52,9 @@ func (opt *Optimizer) Optimize(dataSet *config.DataSet, model ModelFunction) (*O
 		return nil, fmt.Errorf("optimization error: %w", err)
 	}
 
-	fmt.Printf("Optimized parameters: %v\n", result.X)
-	fmt.Printf("Minimum cost: %f\n", result.F)
 	optimizedParms := utils.CreateModelParamsFromParmsSlice(result.X)
 	return &OptimizationResult{
 		OptimizedParms: optimizedParms,
-		Cost:           result.F,
+		MRSE:           result.F,
 	}, nil
 }

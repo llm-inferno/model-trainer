@@ -9,8 +9,11 @@ import (
 	"github.com/llm-inferno/queue-analysis/pkg/analyzer"
 )
 
+// non-linear function, representing the model mapping input variables
+// to output variables (performance metrics), given the model parameters
 type ModelFunction func(x *config.InputVars, params *config.ModelParams) (*config.OutputVars, error)
 
+// implementation of the model function using the LLM queue analyzer
 func Model(x *config.InputVars, params *config.ModelParams) (*config.OutputVars, error) {
 
 	// check parameter validity
@@ -18,7 +21,7 @@ func Model(x *config.InputVars, params *config.ModelParams) (*config.OutputVars,
 		return nil, fmt.Errorf("invalid parameters")
 	}
 
-	// create queue analyzer
+	// create LLM queue analyzer
 	queueConfig := &analyzer.Configuration{
 		MaxBatchSize: x.MaxBatchSize,
 		MaxQueueSize: config.MaxQueueToMaxBatchRatio * x.MaxBatchSize,
@@ -57,19 +60,23 @@ func Model(x *config.InputVars, params *config.ModelParams) (*config.OutputVars,
 	}, nil
 }
 
-func Cost(params *config.ModelParams,
+// loss function to compute the cost (mse) of using the model with a given parameter values
+func LossFunction(params *config.ModelParams,
 	xData []*config.InputVars,
 	yData []*config.OutputVars,
 	model ModelFunction) float64 {
 
+	if len(xData) != len(yData) || len(xData) == 0 {
+		return 0.0
+	}
 	sumOfSquares := 0.0
 	for i := range xData {
 		predictedY, err := model(xData[i], params)
 		if err != nil {
-			fmt.Printf("%d: %s\n", i, err)
+			// fmt.Printf("%d: %s\n", i, err)
 			return math.Inf(1)
 		}
 		sumOfSquares += utils.RelativeDeviationSquared(predictedY, yData[i])
 	}
-	return sumOfSquares
+	return sumOfSquares / float64(len(xData))
 }

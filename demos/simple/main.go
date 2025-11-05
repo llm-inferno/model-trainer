@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os"
 
@@ -39,6 +40,16 @@ func main() {
 		fmt.Println("Optimization failed:", err)
 		return
 	}
-	fmt.Printf("Final optimized parameters: %+v\n", optimizerResult.OptimizedParms)
-	fmt.Printf("Final cost: %f\n", optimizerResult.Cost)
+
+	fmt.Println("Optimization completed successfully!")
+	fmt.Println("-------------------------------")
+	fmt.Printf("Name of data set: %s\n", dataSet.Name)
+	fmt.Printf("Number of data points: %d\n", len(dataSet.Data))
+	if jsonStr, err := json.Marshal(initParms); err == nil {
+		fmt.Printf("Initial parameters: %v\n", string(jsonStr))
+	}
+	fmt.Println("Estimated parameters:")
+	if jsonStr, err := json.Marshal(optimizerResult); err == nil {
+		fmt.Println(string(jsonStr))
+	}
 }
