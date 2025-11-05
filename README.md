@@ -16,7 +16,7 @@
 
 ## Sample output
 
-```json
+```text
 Optimization completed successfully!
 -------------------------------
 Name of data set: sample_dataset
