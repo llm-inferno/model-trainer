@@ -7,32 +7,35 @@ import (
 
 	"github.com/llm-inferno/model-trainer/pkg/config"
 	"github.com/llm-inferno/model-trainer/pkg/core"
+	"github.com/llm-inferno/model-trainer/pkg/reader"
 	"github.com/llm-inferno/model-trainer/pkg/utils"
 )
 
 func main() {
-	filePath := "../../samples/data.json"
+	filePath := "../../samples/guidellm.json"
 	if len(os.Args) > 1 {
 		filePath = os.Args[1]
 	}
 
-	bytes_acc, err_acc := os.ReadFile(filePath)
+	dataBytes, err_acc := os.ReadFile(filePath)
 	if err_acc != nil {
 		fmt.Println(err_acc)
+		return
 	}
 
-	dataSet, err := utils.FromDataToSpec(bytes_acc, config.DataSet{})
-	if err != nil {
+	reader := reader.NewGuideLLMData()
+	if err := reader.ReadFrom(dataBytes); err != nil {
 		fmt.Println(err)
 		return
 	}
+	dataSet := reader.CreateDataSet()
 	fmt.Println(utils.DataSetPrettyPrint(dataSet))
 
 	initParms := &config.ModelParams{
-		Alpha: 8.0,
-		Beta:  0.05,
-		Gamma: 16.0,
-		Delta: 0.005,
+		Alpha: 1.0,
+		Beta:  0.1,
+		Gamma: 10.0,
+		Delta: 0.01,
 	}
 
 	optimizer := core.NewOptimizer(initParms)

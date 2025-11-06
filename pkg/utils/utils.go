@@ -1,7 +1,9 @@
 package utils
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 
 	"github.com/llm-inferno/model-trainer/pkg/config"
 )
@@ -78,4 +80,18 @@ func FromDataToSpec[T any](byteValue []byte, t T) (*T, error) {
 		return nil, err
 	}
 	return &d, nil
+}
+
+// pretty print a data set
+func DataSetPrettyPrint(ds *config.DataSet) string {
+	var b bytes.Buffer
+	fmt.Fprintf(&b, "DataSet: %s \n", ds.Name)
+	fmt.Fprintln(&b)
+	fmt.Fprintf(&b, "  rps \t inToken \t outToken \t wait(msec) \t prefill(msec) \t ITL(msec) \t maxBatch")
+	fmt.Fprintln(&b)
+	for _, p := range ds.Data {
+		fmt.Fprintf(&b, "%6.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %d \n",
+			p.RequestRate, p.InputTokens, p.OutputTokens, p.AvgWaitTime, p.AvgPrefillTime, p.AvgITLTime, p.MaxBatchSize)
+	}
+	return b.String()
 }
