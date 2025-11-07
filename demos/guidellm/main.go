@@ -23,19 +23,24 @@ func main() {
 		return
 	}
 
-	reader := reader.NewGuideLLMData()
-	if err := reader.ReadFrom(dataBytes); err != nil {
-		fmt.Println(err)
-		return
+	var dataReader reader.Reader
+	dataReader = reader.NewGuideLLMData()
+	if err := dataReader.ReadFrom(dataBytes); err != nil {
+		fmt.Println("GuideLLM data not in json output format, Trying CSV ...")
+		dataReader = reader.NewGuideLLMCSVData()
+		if err := dataReader.ReadFrom(dataBytes); err != nil {
+			fmt.Println(err)
+			return
+		}
 	}
-	dataSet := reader.CreateDataSet()
+	dataSet := dataReader.CreateDataSet()
 	fmt.Println(utils.DataSetPrettyPrint(dataSet))
 
 	initParms := &config.ModelParams{
 		Alpha: 1.0,
-		Beta:  0.1,
+		Beta:  0.01,
 		Gamma: 10.0,
-		Delta: 0.01,
+		Delta: 0.001,
 	}
 
 	optimizer := core.NewOptimizer(initParms)

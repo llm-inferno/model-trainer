@@ -60,7 +60,7 @@ func Model(x *config.InputVars, params *config.ModelParams) (*config.OutputVars,
 	}, nil
 }
 
-// loss function to compute the cost (mse) of using the model with a given parameter values
+// loss function to compute the cost (msre) of using the model with a given parameter values
 func LossFunction(params *config.ModelParams,
 	xData []*config.InputVars,
 	yData []*config.OutputVars,

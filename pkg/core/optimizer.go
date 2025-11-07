@@ -18,8 +18,8 @@ type Optimizer struct {
 type OptimizationResult struct {
 	//optimal values of model parameters
 	OptimizedParms *config.ModelParams
-	// mean relative squared error (MRSE) due to optimal parameters
-	MRSE float64
+	// mean squared relative error (MSRE) due to optimal parameters
+	MSRE float64
 }
 
 func NewOptimizer(initParms *config.ModelParams) *Optimizer {
@@ -55,6 +55,6 @@ func (opt *Optimizer) Optimize(dataSet *config.DataSet, model ModelFunction) (*O
 	optimizedParms := utils.CreateModelParamsFromParmsSlice(result.X)
 	return &OptimizationResult{
 		OptimizedParms: optimizedParms,
-		MRSE:           result.F,
+		MSRE:           result.F,
 	}, nil
 }

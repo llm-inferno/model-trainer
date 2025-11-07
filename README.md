@@ -23,7 +23,7 @@ Name of data set: sample_dataset
 Number of data points: 7
 Initial parameters: {"alpha":8,"beta":0.05,"gamma":16,"delta":0.005}
 Estimated parameters:
-{"OptimizedParms":{"alpha":6.428916244727587,"beta":0.047848038501358894,"gamma":15.532604587678735,"delta":0.0018191239860987835},"MRSE":0.002387488865592934}
+{"OptimizedParms":{"alpha":6.428916244727587,"beta":0.047848038501358894,"gamma":15.532604587678735,"delta":0.0018191239860987835},"MSRE":0.002387488865592934}
 ```
 
 ## Usage
@@ -60,6 +60,6 @@ Estimated parameters:
         "gamma": 15.5333533929581,
         "delta": 0.0018186959434353788
     },
-    "MRSE": 0.002387488045214774
+    "MSRE": 0.002387488045214774
     }
     ```

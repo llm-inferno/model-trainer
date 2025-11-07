@@ -29,10 +29,10 @@ func main() {
 	fmt.Println(utils.DataSetPrettyPrint(dataSet))
 
 	initParms := &config.ModelParams{
-		Alpha: 8.0,
-		Beta:  0.05,
-		Gamma: 16.0,
-		Delta: 0.005,
+		Alpha: 1.0,
+		Beta:  0.01,
+		Gamma: 10.0,
+		Delta: 0.001,
 	}
 
 	optimizer := core.NewOptimizer(initParms)
