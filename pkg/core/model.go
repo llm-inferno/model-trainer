@@ -24,22 +24,18 @@ func Model(x *config.InputVars, params *config.ModelParams) (*config.OutputVars,
 	// create LLM queue analyzer
 	queueConfig := &analyzer.Configuration{
 		MaxBatchSize: x.MaxBatchSize,
-		MaxQueueSize: config.MaxQueueToMaxBatchRatio * x.MaxBatchSize,
+		MaxNumTokens: x.MaxNumTokens,
+		MaxQueueSize: config.DefaultMaxQueueToMaxBatchRatio * x.MaxBatchSize,
 		ServiceParms: &analyzer.ServiceParms{
-			Prefill: &analyzer.PrefillParms{
-				Gamma: float32(params.Gamma),
-				Delta: float32(params.Delta),
-			},
-			Decode: &analyzer.DecodeParms{
-				Alpha: float32(params.Alpha),
-				Beta:  float32(params.Beta),
-			},
+			Alpha: float32(params.Alpha),
+			Beta:  float32(params.Beta),
+			Gamma: float32(params.Gamma),
 		},
 	}
 
 	requestSize := &analyzer.RequestSize{
-		AvgInputTokens:  int(math.Ceil(x.InputTokens)),
-		AvgOutputTokens: int(math.Ceil(x.OutputTokens)),
+		AvgInputTokens:  float32(x.InputTokens),
+		AvgOutputTokens: float32(x.OutputTokens),
 	}
 
 	queueAnalyzer, err := analyzer.NewLLMQueueAnalyzer(queueConfig, requestSize)
@@ -49,34 +45,54 @@ func Model(x *config.InputVars, params *config.ModelParams) (*config.OutputVars,
 
 	// analyze queue
 	metrics, err := queueAnalyzer.Analyze(float32(x.RequestRate))
+
+	// approximate model
+	// metrics, err := Analyze(queueAnalyzer, float32(x.RequestRate))
+
 	if err != nil {
 		return nil, fmt.Errorf("Analyze() %v", err)
 	}
 
 	return &config.OutputVars{
-		AvgWaitTime:    float64(metrics.AvgWaitTime),
-		AvgPrefillTime: float64(metrics.AvgPrefillTime),
-		AvgITLTime:     float64(metrics.AvgTokenTime),
+		AvgTTFTTime: float64(metrics.AvgTTFT),
+		AvgITLTime:  float64(metrics.AvgTokenTime),
 	}, nil
 }
 
-// loss function to compute the cost (msre) of using the model with a given parameter values
+// loss function to compute the cost (average deviation error from observations) of using the model with a given parameter values
 func LossFunction(params *config.ModelParams,
 	xData []*config.InputVars,
 	yData []*config.OutputVars,
-	model ModelFunction) float64 {
+	model ModelFunction,
+	errVars *config.ErrorVars,
+	isPrint bool,
+) float64 {
 
 	if len(xData) != len(yData) || len(xData) == 0 {
 		return 0.0
 	}
-	sumOfSquares := 0.0
+	sumErrors := 0.0
+
+	if isPrint {
+		fmt.Printf("  rps \t inToken \t outToken \t TTFTMeas \t TTFTPred \t ITLMeas \t ITLPred \t")
+		fmt.Println()
+	}
+
 	for i := range xData {
 		predictedY, err := model(xData[i], params)
 		if err != nil {
 			// fmt.Printf("%d: %s\n", i, err)
 			return math.Inf(1)
 		}
-		sumOfSquares += utils.RelativeDeviationSquared(predictedY, yData[i])
+
+		if isPrint {
+			fmt.Printf("%6.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t %8.2f \t \n",
+				xData[i].RequestRate, xData[i].InputTokens, xData[i].OutputTokens,
+				yData[i].AvgTTFTTime, predictedY.AvgTTFTTime,
+				yData[i].AvgITLTime, predictedY.AvgITLTime)
+		}
+
+		sumErrors += utils.DeviationError(predictedY, yData[i], errVars)
 	}
-	return sumOfSquares / float64(len(xData))
+	return sumErrors / float64(len(xData))
 }

@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/llm-inferno/model-trainer/pkg/config"
+	"github.com/llm-inferno/model-trainer/pkg/core"
 	"github.com/llm-inferno/model-trainer/pkg/utils"
 )
 
@@ -12,6 +13,8 @@ import (
 type GuideLLMCSVData struct {
 	Benchmarks []BenchmarkCSV
 }
+
+// benchmark data in GuideLLM CSV results file
 
 type BenchmarkCSV struct {
 	ID           string  `json:"Id"`
@@ -39,24 +42,28 @@ func (g *GuideLLMCSVData) ReadFrom(dataBytes []byte) error {
 	return nil
 }
 
-func (g *GuideLLMCSVData) CreateDataSet() *config.DataSet {
-	dataSet := &config.DataSet{
-		Name: "GuideLLM CSV benchmark data",
-		Data: []config.DataPoint{},
-	}
+func (g *GuideLLMCSVData) CreateDataSet() *core.DataSet {
+	dataSet := core.NewDataSet("GuideLLM CSV benchmark data")
 	for _, benchmark := range g.Benchmarks {
-		dataPoint := &config.DataPoint{
+		if benchmark.Name == "throughput" {
+			// skip throughput benchmark data point
+			continue
+		}
+		if dataSet.Size() >= DefaultLimitNumDataPoints {
+			// limit number of data points for model training
+			break
+		}
+		dataPoint := &core.DataPoint{
 			RequestRate:  benchmark.RPS,
 			InputTokens:  benchmark.InputTokens,
 			OutputTokens: benchmark.OutputTokens,
-			// TODO: split TTFT into waiting and prefill time components
-			AvgWaitTime:    0,
-			AvgPrefillTime: benchmark.TTFT, // using median instead of mean since TTFT has a long tail
-			AvgITLTime:     benchmark.ITL,
-			// TODO: how to get the max batch size from the data?
-			MaxBatchSize: 512,
+			AvgTTFTTime:  benchmark.TTFT, // using median instead of mean since TTFT has a long tail
+			AvgITLTime:   benchmark.ITL,
+			// TODO: how to get the max batch size and max num tokens from the data?
+			MaxBatchSize: config.DefaultMaxBatchSize,
+			MaxNumTokens: config.DefaultMaxNumTokens,
 		}
-		dataSet.Data = append(dataSet.Data, *dataPoint)
+		dataSet.AppendDataPoint(dataPoint)
 	}
 	return dataSet
 }

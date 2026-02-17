@@ -1,0 +1,20 @@
+Successfully read GuideLLM HTML data
+=============================================================
+Optimization completed. Objective value: 2.278530
+  rps 	 inToken 	 outToken 	 TTFTMeas 	 TTFTPred 	 ITLMeas 	 ITLPred 	
+  1.32 	  1043.52 	    63.84 	    56.14 	    61.82 	    11.28 	    10.32 	 
+  3.40 	  1043.52 	    63.84 	    70.07 	    64.44 	    12.72 	    11.63 	 
+  5.47 	  1043.52 	    63.84 	    70.43 	    67.75 	    14.23 	    13.29 	 
+  7.55 	  1043.52 	    63.84 	    72.37 	    72.12 	    16.11 	    15.47 	 
+  9.63 	  1043.52 	    63.84 	    74.08 	    78.10 	    18.46 	    18.46 	 
+ 11.70 	  1043.52 	    63.84 	    76.85 	    86.75 	    22.25 	    22.79 	 
+ 13.77 	  1043.52 	    63.84 	    85.93 	   100.46 	    28.21 	    29.65 	 
+ 15.83 	  1043.52 	    63.84 	   126.20 	   125.43 	    42.13 	    42.13 	 
+Optimization completed successfully!
+-------------------------------
+Name of data set: GuideLLM HTML benchmark data
+Number of data points: 8
+Initial parameters: {"alpha":10,"beta":0,"gamma":0}
+Estimated parameters:
+{"OptimizedParms":{"alpha":8.786271686061598,"beta":0.04021423011990218,"gamma":0.00004982169136071693},"AnalysisResults":{"avgErrTTFT":5.4351136684417725,"avgErrITL":0.7002388233609302,"avgErrWeighted":2.2785304383878775}}
+Summary: alpha: 8.786272, beta: 0.040214230, gamma: 0.000049821691, errTTFT: 5.435114, errITL: 0.700239, errWeightedAvg: 2.278530

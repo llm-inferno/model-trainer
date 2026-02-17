@@ -18,8 +18,8 @@ type Optimizer struct {
 type OptimizationResult struct {
 	//optimal values of model parameters
 	OptimizedParms *config.ModelParams
-	// mean squared relative error (MSRE) due to optimal parameters
-	MSRE float64
+	// average errors due to optimal parameters
+	AnalysisResults *config.AnalysisResults
 }
 
 func NewOptimizer(initParms *config.ModelParams) *Optimizer {
@@ -29,32 +29,37 @@ func NewOptimizer(initParms *config.ModelParams) *Optimizer {
 }
 
 // optimize model parameters to fit the data set using the given model function
-func (opt *Optimizer) Optimize(dataSet *config.DataSet, model ModelFunction) (*OptimizationResult, error) {
+func (opt *Optimizer) Optimize(dataSet *DataSet, model ModelFunction) (*OptimizationResult, error) {
 	// prepare data
-	xData, yData := utils.CreateInOutVarsFromDataSet(dataSet)
+	xData, yData := dataSet.GetInOutVars()
 	initParms := utils.CreateParmsSliceFromModelParams(opt.InitParms)
+	errVars := &config.ErrorVars{}
 
 	// Create a problem for the optimizer
 	problem := optimize.Problem{
 		Func: func(p []float64) float64 {
 			params := utils.CreateModelParamsFromParmsSlice(p)
-			return LossFunction(params, xData, yData, model)
+			return LossFunction(params, xData, yData, model, errVars, false)
 		},
 	}
 
 	// Run the optimizer
 	settings := &optimize.Settings{
-		GradientThreshold: 1e-6,
-		MajorIterations:   1000,
+		MajorIterations: config.DefaultNumberOptimizationIterations,
 	}
 	result, err := optimize.Minimize(problem, initParms, settings, nil)
 	if err != nil {
 		return nil, fmt.Errorf("optimization error: %w", err)
 	}
-
 	optimizedParms := utils.CreateModelParamsFromParmsSlice(result.X)
+	fmt.Printf("Optimization completed. Objective value: %f\n", result.F)
+
+	// Create analysis results using optimal solution
+	errVars = &config.ErrorVars{} // start with clean error vars
+	LossFunction(optimizedParms, xData, yData, model, errVars, true)
+	analysisResults := utils.CreateAnalysisResultsFromErrorVars(errVars)
 	return &OptimizationResult{
-		OptimizedParms: optimizedParms,
-		MSRE:           result.F,
+		OptimizedParms:  optimizedParms,
+		AnalysisResults: analysisResults,
 	}, nil
 }

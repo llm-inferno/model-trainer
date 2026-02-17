@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/llm-inferno/model-trainer/pkg/config"
+	"github.com/llm-inferno/model-trainer/pkg/core"
 	"github.com/llm-inferno/model-trainer/pkg/utils"
 )
 
@@ -55,25 +56,22 @@ func (g *GuideLLMData) ReadFrom(dataBytes []byte) error {
 }
 
 // create a data set object from benchmark data
-func (g *GuideLLMData) CreateDataSet() *config.DataSet {
-	dataSet := &config.DataSet{
-		Name: "GuideLLM benchmark data",
-		Data: []config.DataPoint{},
-	}
+func (g *GuideLLMData) CreateDataSet() *core.DataSet {
+	dataSet := core.NewDataSet("GuideLLM benchmark data")
+
 	for _, benchmark := range g.Benchmarks {
 		metrics := benchmark.Metrics
-		dataPoint := &config.DataPoint{
+		dataPoint := &core.DataPoint{
 			RequestRate:  metrics.RPS.Successful.Mean,
 			InputTokens:  metrics.InputTokens.Successful.Mean,
 			OutputTokens: metrics.OutputTokens.Successful.Mean,
-			// TODO: split TTFT into waiting and prefill time components
-			AvgWaitTime:    0,
-			AvgPrefillTime: metrics.TTFT.Successful.Median, // using median instead of mean since TTFT has a long tail
-			AvgITLTime:     metrics.ITL.Successful.Mean,
-			// TODO: how to get the max batch size from the data?
-			MaxBatchSize: 256,
+			AvgTTFTTime:  metrics.TTFT.Successful.Median, // using median instead of mean since TTFT has a long tail
+			AvgITLTime:   metrics.ITL.Successful.Mean,
+			// TODO: how to get the max batch size and max num tokens from the data?
+			MaxBatchSize: config.DefaultMaxBatchSize,
+			MaxNumTokens: config.DefaultMaxNumTokens,
 		}
-		dataSet.Data = append(dataSet.Data, *dataPoint)
+		dataSet.AppendDataPoint(dataPoint)
 	}
 	return dataSet
 }

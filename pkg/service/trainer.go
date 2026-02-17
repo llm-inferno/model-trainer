@@ -30,7 +30,7 @@ func (trainer *Trainer) Run() {
 // train using a data set
 func train(c *gin.Context) {
 	// get data set
-	dataSet := config.DataSet{}
+	dataSet := core.DataSet{}
 	if err := c.BindJSON(&dataSet); err != nil {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": "binding error: " + err.Error()})
 		return
@@ -39,9 +39,8 @@ func train(c *gin.Context) {
 	// TODO: provide means to set initial values
 	initParms := &config.ModelParams{
 		Alpha: 1.0,
-		Beta:  0.05,
-		Gamma: 10.0,
-		Delta: 0.005,
+		Beta:  0.0,
+		Gamma: 0.0,
 	}
 
 	optimizer := core.NewOptimizer(initParms)
@@ -50,7 +49,6 @@ func train(c *gin.Context) {
 		c.IndentedJSON(http.StatusInternalServerError,
 			gin.H{"message": "optimization failed: " + err.Error()})
 		return
-
 	}
 	c.IndentedJSON(http.StatusOK, optimizerResult)
 }

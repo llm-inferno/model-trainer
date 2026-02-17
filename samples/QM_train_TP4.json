@@ -1,0 +1,95 @@
+{
+    "name": "scenario_train_TP4",
+    "data": [
+        {
+            "requestRate": 0.2306946533164662,
+            "inputTokens": 3280.78,
+            "outputTokens": 719.56,
+            "avgWaitTime": 5.134071689099073e-06,
+            "avgPrefillTime": 0.23580822403775528,
+            "avgITLTime": 0.016007153969337842,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 0.3669697922136874,
+            "inputTokens": 3657.52,
+            "outputTokens": 701.44,
+            "avgWaitTime": 4.288754425942898e-06,
+            "avgPrefillTime": 0.2629076123400591,
+            "avgITLTime": 0.017006693440729255,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 0.5032449311109087,
+            "inputTokens": 3409.98,
+            "outputTokens": 649.58,
+            "avgWaitTime": 4.078997299075127e-06,
+            "avgPrefillTime": 0.24482651240192355,
+            "avgITLTime": 0.017804618935394506,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 0.6395200700081299,
+            "inputTokens": 3126.2,
+            "outputTokens": 774.34,
+            "avgWaitTime": 4.298181738704443e-06,
+            "avgPrefillTime": 0.2435375636955723,
+            "avgITLTime": 0.018983330395575097,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 0.7757952089053511,
+            "inputTokens": 3785.34,
+            "outputTokens": 705.86,
+            "avgWaitTime": 4.289553035050631e-06,
+            "avgPrefillTime": 0.27255908543244006,
+            "avgITLTime": 0.020408735123137768,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 0.9120703478025725,
+            "inputTokens": 3580.28,
+            "outputTokens": 608.02,
+            "avgWaitTime": 5.2971928380429746e-06,
+            "avgPrefillTime": 0.27455746779683976,
+            "avgITLTime": 0.019125560296859898,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 1.0483454866997937,
+            "inputTokens": 3001.72,
+            "outputTokens": 763.9,
+            "avgWaitTime": 4.142175894230604e-06,
+            "avgPrefillTime": 0.21959101556101815,
+            "avgITLTime": 0.0204184720604733,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 1.1846206255970149,
+            "inputTokens": 4061.36,
+            "outputTokens": 729.46,
+            "avgWaitTime": 4.082715604454279e-06,
+            "avgPrefillTime": 0.29312983972486106,
+            "avgITLTime": 0.02551543328058166,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 1.320895764494236,
+            "inputTokens": 3486.36,
+            "outputTokens": 683.68,
+            "avgWaitTime": 4.1573611088097094e-06,
+            "avgPrefillTime": 0.2522400510148145,
+            "avgITLTime": 0.022476549417070633,
+            "maxBatchSize": 256
+        },
+        {
+            "requestRate": 1.4571709033914573,
+            "inputTokens": 3284.84,
+            "outputTokens": 721.2,
+            "avgWaitTime": 4.174727946519852e-06,
+            "avgPrefillTime": 0.23842230297625064,
+            "avgITLTime": 0.02396963778520034,
+            "maxBatchSize": 256
+        }
+    ]
+}

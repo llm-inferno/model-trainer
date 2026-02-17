@@ -1,0 +1,19 @@
+GuideLLM data not in json output format, Trying CSV ...
+Optimization completed. Objective value: 3.757978
+  rps 	 inToken 	 outToken 	 TTFTMeas 	 TTFTPred 	 ITLMeas 	 ITLPred 	
+  1.85 	  4096.60 	    63.54 	   109.37 	   103.41 	     6.89 	     9.13 	 
+  2.66 	  4104.50 	    64.17 	   114.22 	   105.51 	     8.67 	    10.09 	 
+  3.47 	  4159.88 	    64.72 	   117.26 	   109.21 	    10.03 	    11.36 	 
+  4.29 	  4091.45 	    64.53 	   114.67 	   110.41 	    11.70 	    12.67 	 
+  5.10 	  4082.93 	    64.25 	   113.81 	   113.81 	    14.12 	    14.46 	 
+  5.90 	  4170.06 	    64.72 	   120.30 	   121.15 	    18.63 	    17.22 	 
+  6.71 	  4081.74 	    64.23 	   118.84 	   124.52 	    23.89 	    19.83 	 
+  7.52 	  4141.74 	    64.52 	   135.43 	   136.18 	    41.23 	    25.03 	 
+Optimization completed successfully!
+-------------------------------
+Name of data set: GuideLLM CSV benchmark data
+Number of data points: 8
+Initial parameters: {"alpha":6,"beta":0,"gamma":0}
+Estimated parameters:
+{"OptimizedParms":{"alpha":6.027917709304992,"beta":0.02112877829968454,"gamma":4.899881663971766e-12},"AnalysisResults":{"avgErrTTFT":4.283691167831421,"avgErrITL":3.4951221176411407,"avgErrWeighted":3.7579784677045676}}
+Summary: alpha: 6.027918, beta: 0.021128778, gamma: 0.000000000005, errTTFT: 4.283691, errITL: 3.495122, errWeightedAvg: 3.757978

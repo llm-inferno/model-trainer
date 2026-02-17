@@ -21,18 +21,18 @@ func main() {
 		fmt.Println(err_acc)
 	}
 
-	dataSet, err := utils.FromDataToSpec(bytes_acc, config.DataSet{})
+	dataSet, err := utils.FromDataToSpec(bytes_acc, core.DataSet{})
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(utils.DataSetPrettyPrint(dataSet))
+	dataSet.Fix()
+	// fmt.Println(dataSet.DataSetPrettyPrint())
 
 	initParms := &config.ModelParams{
-		Alpha: 1.0,
-		Beta:  0.01,
-		Gamma: 10.0,
-		Delta: 0.001,
+		Alpha: 10.0,
+		Beta:  0.0,
+		Gamma: 0.0,
 	}
 
 	optimizer := core.NewOptimizer(initParms)

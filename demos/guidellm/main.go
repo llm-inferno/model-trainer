@@ -8,11 +8,12 @@ import (
 	"github.com/llm-inferno/model-trainer/pkg/config"
 	"github.com/llm-inferno/model-trainer/pkg/core"
 	"github.com/llm-inferno/model-trainer/pkg/reader"
-	"github.com/llm-inferno/model-trainer/pkg/utils"
 )
 
+const DefaultFileName = "../../samples/guidellm.json"
+
 func main() {
-	filePath := "../../samples/guidellm.json"
+	filePath := DefaultFileName
 	if len(os.Args) > 1 {
 		filePath = os.Args[1]
 	}
@@ -34,13 +35,12 @@ func main() {
 		}
 	}
 	dataSet := dataReader.CreateDataSet()
-	fmt.Println(utils.DataSetPrettyPrint(dataSet))
+	// fmt.Println(dataSet.DataSetPrettyPrint())
 
 	initParms := &config.ModelParams{
-		Alpha: 1.0,
-		Beta:  0.01,
-		Gamma: 10.0,
-		Delta: 0.001,
+		Alpha: 6.0,
+		Beta:  0.0,
+		Gamma: 0.0,
 	}
 
 	optimizer := core.NewOptimizer(initParms)
@@ -61,4 +61,12 @@ func main() {
 	if jsonStr, err := json.Marshal(optimizerResult); err == nil {
 		fmt.Println(string(jsonStr))
 	}
+	// Print a summary line
+	fmt.Printf("Summary: alpha: %.6f, beta: %.9f, gamma: %.12f, errTTFT: %.6f, errITL: %.6f, errWeightedAvg: %.6f\n",
+		optimizerResult.OptimizedParms.Alpha,
+		optimizerResult.OptimizedParms.Beta,
+		optimizerResult.OptimizedParms.Gamma,
+		optimizerResult.AnalysisResults.AvgErrTTFT,
+		optimizerResult.AnalysisResults.AvgErrITL,
+		optimizerResult.AnalysisResults.AvgErrWeighted)
 }

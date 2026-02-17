@@ -1,0 +1,245 @@
+{
+    "name": "scenario4_test",
+    "data": [
+        {
+            "requestRate": 25.0,
+            "avgPrefillTime": 0.010272571459063328,
+            "avgITLTime": 0.0078019118572551565,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.345,
+            "avgWaitTime": 4.690148634836078e-06
+        },
+        {
+            "requestRate": 2.5,
+            "avgPrefillTime": 0.08859182689087214,
+            "avgITLTime": 0.015363994210433074,
+            "inputTokens": 5040.039039039039,
+            "outputTokens": 985.0365365365366,
+            "avgWaitTime": 0.008200392482226138
+        },
+        {
+            "requestRate": 10.0,
+            "avgPrefillTime": 0.00907766802702099,
+            "avgITLTime": 0.007230665383126923,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3545,
+            "avgWaitTime": 6.60166604211554e-06
+        },
+        {
+            "requestRate": 4.0,
+            "avgPrefillTime": 0.02274973447251432,
+            "avgITLTime": 0.00792361660257086,
+            "inputTokens": 2007.096,
+            "outputTokens": 252.39,
+            "avgWaitTime": 0.0003323200404029194
+        },
+        {
+            "requestRate": 50.0,
+            "avgPrefillTime": 0.013383325349539519,
+            "avgITLTime": 0.009603001826730578,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3455,
+            "avgWaitTime": 5.056196823716164e-06
+        },
+        {
+            "requestRate": 0.5,
+            "avgPrefillTime": 0.0942584112926852,
+            "avgITLTime": 0.007470525862741123,
+            "inputTokens": 5039.3,
+            "outputTokens": 986.0765,
+            "avgWaitTime": 0.003992858520359732
+        },
+        {
+            "requestRate": 1.5,
+            "avgPrefillTime": 0.08336433767632116,
+            "avgITLTime": 0.010248272425961373,
+            "inputTokens": 5039.3,
+            "outputTokens": 984.796,
+            "avgWaitTime": 0.007090022373013198
+        },
+        {
+            "requestRate": 5.0,
+            "avgPrefillTime": 0.008469700781279243,
+            "avgITLTime": 0.006816303667488283,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3455,
+            "avgWaitTime": 1.0670113610103726e-05
+        },
+        {
+            "requestRate": 8.0,
+            "avgPrefillTime": 0.0290729273775396,
+            "avgITLTime": 0.00989220261826828,
+            "inputTokens": 2007.096,
+            "outputTokens": 252.3115,
+            "avgWaitTime": 0.00017633373950775422
+        },
+        {
+            "requestRate": 1.5,
+            "avgPrefillTime": 0.10236947585258167,
+            "avgITLTime": 0.01014552268227561,
+            "inputTokens": 5039.3,
+            "outputTokens": 985.71,
+            "avgWaitTime": 0.014150486798142082
+        },
+        {
+            "requestRate": 5.0,
+            "avgPrefillTime": 0.008531537129776553,
+            "avgITLTime": 0.006870833190540664,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3455,
+            "avgWaitTime": 1.134877314325422e-05
+        },
+        {
+            "requestRate": 8.0,
+            "avgPrefillTime": 0.024746593548492457,
+            "avgITLTime": 0.009609232318074815,
+            "inputTokens": 2007.096,
+            "outputTokens": 252.496,
+            "avgWaitTime": 0.0018233782794886792
+        },
+        {
+            "requestRate": 25.0,
+            "avgPrefillTime": 0.010260368650313467,
+            "avgITLTime": 0.00790451327966731,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3325,
+            "avgWaitTime": 4.527925979346037e-06
+        },
+        {
+            "requestRate": 2.0,
+            "avgPrefillTime": 0.08175198503421911,
+            "avgITLTime": 0.012375087273989052,
+            "inputTokens": 5037.444222111056,
+            "outputTokens": 983.5687843921961,
+            "avgWaitTime": 0.0041547510280260345
+        },
+        {
+            "requestRate": 4.0,
+            "avgPrefillTime": 0.02548951169452266,
+            "avgITLTime": 0.008004263605614851,
+            "inputTokens": 2007.096,
+            "outputTokens": 252.262,
+            "avgWaitTime": 5.004742649725813e-05
+        },
+        {
+            "requestRate": 50.0,
+            "avgPrefillTime": 0.01292479140474461,
+            "avgITLTime": 0.009453582089068751,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3455,
+            "avgWaitTime": 6.176403572317213e-05
+        },
+        {
+            "requestRate": 0.5,
+            "avgPrefillTime": 0.07591987055318895,
+            "avgITLTime": 0.0075131455433837,
+            "inputTokens": 5039.3,
+            "outputTokens": 986.042,
+            "avgWaitTime": 0.0018306573971640318
+        },
+        {
+            "requestRate": 5.0,
+            "avgPrefillTime": 0.008744026175059844,
+            "avgITLTime": 0.006954288928297651,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3455,
+            "avgWaitTime": 1.3365727034397424e-05
+        },
+        {
+            "requestRate": 4.0,
+            "avgPrefillTime": 0.02502942725154571,
+            "avgITLTime": 0.007981226056283165,
+            "inputTokens": 2007.096,
+            "outputTokens": 252.414,
+            "avgWaitTime": 4.549226316157728e-06
+        },
+        {
+            "requestRate": 2.0,
+            "avgPrefillTime": 0.08670555094882228,
+            "avgITLTime": 0.012397944767987763,
+            "inputTokens": 5041.512756378189,
+            "outputTokens": 984.1320660330165,
+            "avgWaitTime": 0.012351383122915087
+        },
+        {
+            "requestRate": 0.5,
+            "avgPrefillTime": 0.07810362124023959,
+            "avgITLTime": 0.0076506511253711445,
+            "inputTokens": 5039.3,
+            "outputTokens": 985.4885,
+            "avgWaitTime": 0.0005413086768239736
+        },
+        {
+            "requestRate": 25.0,
+            "avgPrefillTime": 0.010536845590453595,
+            "avgITLTime": 0.007996163744036902,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3545,
+            "avgWaitTime": 4.662167746573687e-06
+        },
+        {
+            "requestRate": 10.0,
+            "avgPrefillTime": 0.008822843049536459,
+            "avgITLTime": 0.007097773931288445,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3455,
+            "avgWaitTime": 6.9345096126198765e-06
+        },
+        {
+            "requestRate": 2.5,
+            "avgPrefillTime": 0.11693621724119513,
+            "avgITLTime": 0.014971388086499969,
+            "inputTokens": 5037.945472736368,
+            "outputTokens": 987.8184092046023,
+            "avgWaitTime": 0.04255336850183667
+        },
+        {
+            "requestRate": 2.0,
+            "avgPrefillTime": 0.10875296103546861,
+            "avgITLTime": 0.012107672586369208,
+            "inputTokens": 5039.3,
+            "outputTokens": 984.265,
+            "avgWaitTime": 0.02666197084460873
+        },
+        {
+            "requestRate": 50.0,
+            "avgPrefillTime": 0.01368806952610612,
+            "avgITLTime": 0.00960938823956739,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3455,
+            "avgWaitTime": 5.1813153550028805e-06
+        },
+        {
+            "requestRate": 10.0,
+            "avgPrefillTime": 0.008909621225320734,
+            "avgITLTime": 0.007055825007863677,
+            "inputTokens": 258.1075,
+            "outputTokens": 31.3545,
+            "avgWaitTime": 6.2845475040376185e-06
+        },
+        {
+            "requestRate": 2.5,
+            "avgPrefillTime": 0.0915810390599072,
+            "avgITLTime": 0.015414025307534567,
+            "inputTokens": 5039.3,
+            "outputTokens": 985.9505,
+            "avgWaitTime": 0.01957903029379668
+        },
+        {
+            "requestRate": 8.0,
+            "avgPrefillTime": 0.02957900821848307,
+            "avgITLTime": 0.009736634249472551,
+            "inputTokens": 2007.096,
+            "outputTokens": 252.497,
+            "avgWaitTime": 0.00015125555358827113
+        },
+        {
+            "requestRate": 1.5,
+            "avgPrefillTime": 0.07980219978699461,
+            "avgITLTime": 0.010337303004042148,
+            "inputTokens": 5039.3,
+            "outputTokens": 985.2075,
+            "avgWaitTime": 0.0020711313044885172
+        }
+    ]
+}
