@@ -12,10 +12,6 @@ func Analyze(qa *analyzer.LLMQueueAnalyzer, requestRate float32) (metrics *analy
 		return nil, fmt.Errorf("invalid request rate %v", requestRate)
 	}
 	rateRange := qa.RateRange
-	if requestRate > rateRange.Max {
-		err = fmt.Errorf("rate=%v, max allowed rate=%v", requestRate, rateRange.Max)
-		return nil, err
-	}
 
 	alpha := float64(qa.ServiceParms.Alpha)
 	beta := float64(qa.ServiceParms.Beta)
