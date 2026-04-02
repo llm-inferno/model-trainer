@@ -3,7 +3,7 @@ module github.com/llm-inferno/model-trainer
 go 1.25.0
 
 require (
-	github.com/llm-inferno/queue-analysis v0.3.0
+	github.com/llm-inferno/queue-analysis v0.4.0
 	gonum.org/v1/gonum v0.16.0
 )
 
