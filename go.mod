@@ -44,5 +44,3 @@ require (
 	github.com/gin-gonic/gin v1.11.0
 	golang.org/x/tools v0.38.0 // indirect
 )
-
-replace github.com/llm-inferno/queue-analysis => /Users/tantawi/Projects/llm-inferno/queue-analysis
