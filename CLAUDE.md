@@ -60,7 +60,7 @@ benchmark data (JSON/CSV/HTML)
   - `DataPoint` / `DataSet` — data structures; `Fix()` fills missing fields with defaults, `ToMSecs()` converts seconds to ms.
   - `Model()` — the forward model: given `InputVars` + `ModelParams`, calls `queue-analysis` and returns predicted `OutputVars`.
   - `LossFunction()` — computes mean weighted deviation error across a dataset.
-  - `Optimizer` — wraps `gonum/optimize.Minimize` (Nelder-Mead by default) to minimize `LossFunction`.
+  - `Optimizer` — wraps `gonum/optimize.Minimize` (explicitly Nelder-Mead) to minimize `LossFunction`. Variables are scaled by their initial values before optimization so the simplex is well-conditioned across parameters of different magnitudes.
   - `Analyzer` — runs `LossFunction` with fixed parameters (no optimization) to score a trained model.
 
 - **`pkg/reader/`** — format adapters implementing the `Reader` interface (`ReadFrom`, `CreateDataSet`). Formats: GuideLLM JSON, GuideLLM CSV, GuideLLM HTML. GuideLLM uses median TTFT (not mean) because TTFT has a long tail.

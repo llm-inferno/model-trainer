@@ -28,17 +28,46 @@ func NewOptimizer(initParms *config.ModelParams) *Optimizer {
 	}
 }
 
+// scaleSlice divides each element of raw by the corresponding scale factor.
+// A scale factor of 0 is treated as 1 to avoid division by zero.
+func scaleSlice(raw, scale []float64) []float64 {
+	out := make([]float64, len(raw))
+	for i := range raw {
+		if scale[i] != 0 {
+			out[i] = raw[i] / scale[i]
+		} else {
+			out[i] = raw[i]
+		}
+	}
+	return out
+}
+
+// unscaleSlice multiplies each element of scaled by the corresponding scale factor.
+func unscaleSlice(scaled, scale []float64) []float64 {
+	out := make([]float64, len(scaled))
+	for i := range scaled {
+		out[i] = scaled[i] * scale[i]
+	}
+	return out
+}
+
 // optimize model parameters to fit the data set using the given model function
 func (opt *Optimizer) Optimize(dataSet *DataSet, model ModelFunction) (*OptimizationResult, error) {
 	// prepare data
 	xData, yData := dataSet.GetInOutVars()
-	initParms := utils.CreateParmsSliceFromModelParams(opt.InitParms)
 	errVars := &config.ErrorVars{}
 
-	// Create a problem for the optimizer
+	// Scale variables by their initial values so the optimizer sees O(1) quantities.
+	// This prevents the initial Nelder-Mead simplex from being degenerate when
+	// parameters span multiple orders of magnitude.
+	scale := utils.CreateParmsSliceFromModelParams(opt.InitParms)
+	scaledInit := scaleSlice(scale, scale) // raw=init, so result is all 1s (or 1 for zero inits)
+
+	// Create a problem for the optimizer (operates in scaled space)
 	problem := optimize.Problem{
 		Func: func(p []float64) float64 {
-			params := utils.CreateModelParamsFromParmsSlice(p)
+			unscaled := unscaleSlice(p, scale)
+			params := utils.CreateModelParamsFromParmsSlice(unscaled)
 			return LossFunction(params, xData, yData, model, errVars, false)
 		},
 	}
@@ -47,11 +76,11 @@ func (opt *Optimizer) Optimize(dataSet *DataSet, model ModelFunction) (*Optimiza
 	settings := &optimize.Settings{
 		MajorIterations: config.DefaultNumberOptimizationIterations,
 	}
-	result, err := optimize.Minimize(problem, initParms, settings, nil)
+	result, err := optimize.Minimize(problem, scaledInit, settings, &optimize.NelderMead{})
 	if err != nil {
 		return nil, fmt.Errorf("optimization error: %w", err)
 	}
-	optimizedParms := utils.CreateModelParamsFromParmsSlice(result.X)
+	optimizedParms := utils.CreateModelParamsFromParmsSlice(unscaleSlice(result.X, scale))
 	fmt.Printf("Optimization completed. Objective value: %f\n", result.F)
 
 	// Create analysis results using optimal solution

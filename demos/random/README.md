@@ -27,7 +27,7 @@ go run main.go 20 10 42     # 20 points, 10% noise, seed=42
 | | Value |
 |-|-------|
 | True parameters | α=6, β=0.02, γ=0.00005 |
-| Initial parameters | α=3, β=0.01, γ=0.00001 |
+| Initial parameters | α=1, β=0.01, γ=0.00001 |
 | maxBatchSize | 256 |
 | maxNumTokens | 8192 |
 | maxQueueSize | 256 |
@@ -51,11 +51,9 @@ With noisy data the loss landscape develops local minima. The optimizer (Nelder-
 
 | Initial α | 2% noise result |
 |-----------|----------------|
-| 1 | Stuck in local minimum — poor recovery |
-| 2 | Still stuck |
-| 3 (default) | Escapes — converges to α≈5.93, low error |
-| 4–6 | Good convergence |
+| 1 (default) | Converges well — scaling makes this robust |
+| 2–6 | Also converges well |
 
 With **0% noise**, even α=1 converges to the true parameters exactly. The local-minimum trap is a consequence of noise distorting the loss landscape, not a bug.
 
-**Practical takeaway:** when using this demo with noise, choose initial parameters that are in the right order of magnitude. The default α=3 is the minimum starting value that reliably escapes the local minimum for this configuration.
+**Practical takeaway:** the optimizer scales each variable by its initial value so the Nelder-Mead simplex is well-conditioned regardless of parameter magnitude. For this to work, all initial values must be **positive and non-zero** — a zero initial value disables scaling for that parameter, which can cause the simplex to be degenerate in that dimension.

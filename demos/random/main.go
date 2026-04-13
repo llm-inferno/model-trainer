@@ -139,7 +139,7 @@ func main() {
 	dataSet := generateDataSet(numPoints, noisePercent, rng)
 
 	trueParms := &config.ModelParams{Alpha: TrueAlpha, Beta: TrueBeta, Gamma: TrueGamma}
-	initParms := &config.ModelParams{Alpha: 3.0, Beta: 0.01, Gamma: 0.00001}
+	initParms := &config.ModelParams{Alpha: 1.0, Beta: 0.01, Gamma: 0.00001}
 
 	optimizer := core.NewOptimizer(initParms)
 	optimizerResult, err := optimizer.Optimize(dataSet, core.Model)
