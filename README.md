@@ -88,6 +88,8 @@ Estimated parameters:
 {"OptimizedParms":{"alpha":6.7605062059162675,"beta":0.025362709109593,"gamma":2.575997037645202e-9},"AnalysisResults":{"avgErrTTFT":1.5372373199462892,"avgErrITL":0.799758480616978,"avgErrWeighted":1.0455847603934152}}
 ```
 
+> **Note:** The optimizer scales each parameter by its initial value to keep the search space well-conditioned. Initial parameters should be **positive and non-zero** — a zero initial value disables scaling for that parameter, which can degrade convergence when parameters span multiple orders of magnitude.
+
 **Results Interpretation:**
 
 - **OptimizedParms**: The estimated model parameters (alpha, beta, gamma)
