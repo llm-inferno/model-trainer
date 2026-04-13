@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"math/rand"
 	"os"
 	"strconv"
@@ -14,7 +15,8 @@ import (
 )
 
 const (
-	DefaultNumPoints = 20
+	DefaultNumPoints   = 20
+	DefaultNoisePercent = 2.0
 
 	// known "true" parameters used to generate synthetic data
 	TrueAlpha = 6.0
@@ -35,12 +37,19 @@ const (
 	MaxRPS          = 6.0
 )
 
-func generateDataSet(numPoints int, rng *rand.Rand) *core.DataSet {
+// perturb adds Gaussian noise with std = noiseFraction * value, clamped to a small positive floor.
+func perturb(value float64, noiseFraction float64, rng *rand.Rand) float64 {
+	noisy := value * (1.0 + noiseFraction*rng.NormFloat64())
+	return math.Max(noisy, value*0.01)
+}
+
+func generateDataSet(numPoints int, noisePercent float64, rng *rand.Rand) *core.DataSet {
 	trueParms := &analyzer.ServiceParms{
 		Alpha: TrueAlpha,
 		Beta:  TrueBeta,
 		Gamma: TrueGamma,
 	}
+	noiseFraction := noisePercent / 100.0
 
 	randInRange := func(min, max float64) float64 {
 		return min + rng.Float64()*(max-min)
@@ -72,12 +81,19 @@ func generateDataSet(numPoints int, rng *rand.Rand) *core.DataSet {
 			continue
 		}
 
+		ttft := float64(metrics.AvgTTFT)
+		itl := float64(metrics.AvgTokenTime)
+		if noiseFraction > 0 {
+			ttft = perturb(ttft, noiseFraction, rng)
+			itl = perturb(itl, noiseFraction, rng)
+		}
+
 		dataSet.AppendDataPoint(&core.DataPoint{
 			RequestRate:  requestRate,
 			InputTokens:  inputTokens,
 			OutputTokens: outputTokens,
-			AvgTTFTTime:  float64(metrics.AvgTTFT),
-			AvgITLTime:   float64(metrics.AvgTokenTime),
+			AvgTTFTTime:  ttft,
+			AvgITLTime:   itl,
 			MaxBatchSize: MaxBatchSize,
 			MaxNumTokens: MaxNumTokens,
 		})
@@ -96,11 +112,21 @@ func main() {
 		numPoints = n
 	}
 
-	var seed int64
+	noisePercent := DefaultNoisePercent
 	if len(os.Args) > 2 {
-		s, err := strconv.ParseInt(os.Args[2], 10, 64)
+		p, err := strconv.ParseFloat(os.Args[2], 64)
+		if err != nil || p < 0 {
+			fmt.Fprintf(os.Stderr, "invalid noise percent (must be >= 0): %s\n", os.Args[2])
+			os.Exit(1)
+		}
+		noisePercent = p
+	}
+
+	var seed int64
+	if len(os.Args) > 3 {
+		s, err := strconv.ParseInt(os.Args[3], 10, 64)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "invalid seed: %s\n", os.Args[2])
+			fmt.Fprintf(os.Stderr, "invalid seed: %s\n", os.Args[3])
 			os.Exit(1)
 		}
 		seed = s
@@ -109,11 +135,11 @@ func main() {
 	}
 	rng := rand.New(rand.NewSource(seed))
 
-	fmt.Printf("Generating %d synthetic data points (seed=%d)...\n", numPoints, seed)
-	dataSet := generateDataSet(numPoints, rng)
+	fmt.Printf("Generating %d synthetic data points (noise=%.1f%%, seed=%d)...\n", numPoints, noisePercent, seed)
+	dataSet := generateDataSet(numPoints, noisePercent, rng)
 
 	trueParms := &config.ModelParams{Alpha: TrueAlpha, Beta: TrueBeta, Gamma: TrueGamma}
-	initParms := &config.ModelParams{Alpha: 1.0, Beta: 0.01, Gamma: 0.00001}
+	initParms := &config.ModelParams{Alpha: 3.0, Beta: 0.01, Gamma: 0.00001}
 
 	optimizer := core.NewOptimizer(initParms)
 	optimizerResult, err := optimizer.Optimize(dataSet, core.Model)
