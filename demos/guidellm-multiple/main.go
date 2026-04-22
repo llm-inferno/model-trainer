@@ -55,17 +55,17 @@ func main() {
 	dataSet.Fix()
 	// fmt.Println(dataSet.DataSetPrettyPrint())
 
-	// initParms := &config.ModelParams{
-	// 	Alpha: 6.0,
-	// 	Beta:  0.0,
-	// 	Gamma: 0.0,
-	// }
-
 	initParms := &config.ModelParams{
-		Alpha: 6.7,
-		Beta:  0.024,
-		Gamma: 0.000048,
+		Alpha: 1.0,
+		Beta:  0.01,
+		Gamma: 0.0001,
 	}
+
+	// initParms := &config.ModelParams{
+	// 	Alpha: 6.7,
+	// 	Beta:  0.024,
+	// 	Gamma: 0.000048,
+	// }
 
 	optimizer := core.NewOptimizer(initParms)
 	optimizerResult, err := optimizer.Optimize(dataSet, core.Model)
