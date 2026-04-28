@@ -1,5 +1,5 @@
 package reader
 
 const (
-	DefaultLimitNumDataPoints = 8
+	DefaultLimitNumDataPoints = 7
 )
