@@ -40,8 +40,12 @@ func main() {
 			fmt.Println("GuideLLM data not in json output format, Trying CSV ...")
 			dataReader = reader.NewGuideLLMCSVData()
 			if err := dataReader.ReadFrom(dataBytes); err != nil {
-				fmt.Println(err)
-				continue
+				fmt.Println("GuideLLM data not in CSV format, Trying HTML ...")
+				dataReader = reader.NewGuideLLMHTMLData()
+				if err := dataReader.ReadFrom(dataBytes); err != nil {
+					fmt.Println(err)
+					continue
+				}
 			}
 		}
 		dataSet.Merge(dataReader.CreateDataSet())

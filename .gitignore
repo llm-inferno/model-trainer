@@ -17,3 +17,15 @@ vendor/
 # Miscellaneous
 .DS_Store
 ~*
+
+# Generated figures
+experiments/*.pdf
+
+# Compiled demo binaries left behind by `go build` at repo root
+/guidellm
+/guidellm-html
+/guidellm-multiple
+/qm
+/qm-check
+/random
+/simple
