@@ -114,16 +114,25 @@ def _parse(stdout: str, label: str, color: str, marker: str) -> FitResult:
 
 
 def plot(fits: list[FitResult], out_path: Path) -> None:
-    fig, (ax_ttft, ax_itl) = plt.subplots(1, 2, figsize=(10, 4.5))
+    plt.rcParams.update({
+        "font.size": 16,
+        "axes.labelsize": 18,
+        "axes.titlesize": 18,
+        "xtick.labelsize": 15,
+        "ytick.labelsize": 15,
+        "legend.fontsize": 15,
+    })
+
+    fig, (ax_ttft, ax_itl) = plt.subplots(1, 2, figsize=(11, 5))
 
     for f in fits:
         ax_ttft.scatter(
             f.ttft_meas, f.ttft_pred,
-            s=36, marker=f.marker, color=f.color, alpha=0.7, label=f.label,
+            s=56, marker=f.marker, color=f.color, alpha=0.7, label=f.label,
         )
         ax_itl.scatter(
             f.itl_meas, f.itl_pred,
-            s=36, marker=f.marker, color=f.color, alpha=0.7, label=f.label,
+            s=56, marker=f.marker, color=f.color, alpha=0.7, label=f.label,
         )
 
     for ax, xlabel, ylabel in (
