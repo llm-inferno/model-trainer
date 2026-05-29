@@ -96,7 +96,7 @@ Estimated parameters:
 - **AnalysisResults**: Prediction accuracy metrics
   - `avgErrTTFT`: Average absolute error for Time To First Token (milliseconds)
   - `avgErrITL`: Average absolute error for Inter-Token Latency (milliseconds)
-  - `avgErrWeighted`: Weighted average error — computed as `(avgErrTTFT × 0.5 + avgErrITL) / 1.5`, giving ITL twice the weight of TTFT
+  - `avgErrWeighted`: The optimizer's loss, mean per-point sum of squared relative errors, `((TTFT_pred - TTFT_obs)/TTFT_obs)^2 + ((ITL_pred - ITL_obs)/ITL_obs)^2` averaged over the dataset. Scale-free, so TTFT and ITL contribute on equal footing.
 
 ## Usage
 

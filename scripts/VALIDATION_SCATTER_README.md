@@ -53,17 +53,18 @@ The fit reproduces Table 1 of the paper:
 
 | model         | alpha | beta       | gamma      | err_TTFT | err_ITL |
 |---------------|------:|-----------:|-----------:|---------:|--------:|
-| Llama-3.1-8B  | 6.49  | 2.19e-02   | 4.96e-05   | 0.119    | 0.086   |
-| Qwen2.5-14B   | 9.73  | 4.07e-02   | 8.57e-05   | 0.117    | 0.131   |
+| Llama-3.1-8B  | 6.58  | 1.93e-02   | 5.46e-05   | 0.146    | 0.060   |
+| Qwen2.5-14B   | 9.87  | 3.58e-02   | 8.63e-05   | 0.163    | 0.080   |
 
 ## Notes
 
 - The paper's relative error metric is computed in Python from the
-  measured/predicted columns. The Go optimizer minimises a weighted
-  absolute MAE, `(0.5 * |TTFT_err| + |ITL_err|) / 1.5` (see
-  `pkg/utils/utils.go` and `pkg/config/defaults.go`), so the optimizer's
-  `errWeightedAvg` is not the same number as either `err_TTFT` or
-  `err_ITL` reported here.
+  measured/predicted columns and is the mean absolute deviation divided
+  by the mean measurement. The Go optimizer minimises the per-point sum
+  of squared relative errors, `((TTFT_pred - TTFT_obs)/TTFT_obs)^2 +
+  ((ITL_pred - ITL_obs)/ITL_obs)^2` (see `pkg/utils/utils.go`), so the
+  optimizer's `avgErrWeighted` field is not the same number as either
+  `err_TTFT` or `err_ITL` reported here.
 - The HTML fallback in `demos/guidellm-multiple/main.go` is what lets
   exp2's GuideLLM HTML files participate in the joint fit alongside
   exp1's JSON files.

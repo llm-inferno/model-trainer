@@ -8,19 +8,35 @@ import (
 )
 
 // cost function to compute the error deviation between estimated
-// and actual output variables (performance metrics)
+// and actual output variables (performance metrics).
+//
+// The optimizer's loss is the sum of squared relative errors,
+// (TTFT_pred-TTFT_obs)^2/TTFT_obs^2 + (ITL_pred-ITL_obs)^2/ITL_obs^2.
+// Relative weighting is scale-free, so the two metrics enter on equal
+// footing without an explicit TTFT/ITL weight. CumErrorTTFT and
+// CumErrorITL still accumulate absolute deviations for reporting; the
+// optimizer minimises CumErrorWeightedAvg / Count, which now equals
+// the mean per-point sum of squared relative errors.
 func DeviationError(estimate, actual *config.OutputVars, err *config.ErrorVars) float64 {
 
 	errTTFT := math.Abs(estimate.AvgTTFTTime - actual.AvgTTFTTime)
 	errITL := math.Abs(estimate.AvgITLTime - actual.AvgITLTime)
-	errWeightedAvg := (errTTFT*config.TTFT2ITLWeight + errITL) / (config.TTFT2ITLWeight + 1.0)
 
-	// update the error vars
+	var lossRelSq float64
+	if actual.AvgTTFTTime > 0 && actual.AvgITLTime > 0 {
+		relTTFT := errTTFT / actual.AvgTTFTTime
+		relITL := errITL / actual.AvgITLTime
+		lossRelSq = relTTFT*relTTFT + relITL*relITL
+	} else {
+		// fall back to absolute squared error if a measurement is non-positive
+		lossRelSq = errTTFT*errTTFT + errITL*errITL
+	}
+
 	err.Count++
 	err.CumErrorTTFT += errTTFT
 	err.CumErrorITL += errITL
-	err.CumErrorWeightedAvg += errWeightedAvg
-	return errWeightedAvg
+	err.CumErrorWeightedAvg += lossRelSq
+	return lossRelSq
 }
 
 // converting from model parameters struct to parameters array

@@ -11,10 +11,6 @@ const (
 	// default maximum number of tokens (input and output) in an iteration
 	DefaultMaxNumTokens = 8192
 
-	// default weight for TTFT2ITL in calculating average weighted deviation error
-	// errWeightedAvg = (errTTFT * TTFT2ITLWeight + errITL) / (TTFT2ITLWeight + 1)
-	TTFT2ITLWeight = 0.5
-
 	// default maximum number of iterations allowed in the optimizer
 	DefaultNumberOptimizationIterations = 1000
 )

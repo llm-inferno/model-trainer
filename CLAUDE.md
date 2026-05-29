@@ -54,12 +54,12 @@ benchmark data (JSON/CSV/HTML)
 
 ### Key packages
 
-- **`pkg/config/`** — shared types (`ModelParams`, `InputVars`, `OutputVars`, `ErrorVars`, `AnalysisResults`) and constants (default batch sizes, optimizer iterations, TTFT/ITL error weight).
+- **`pkg/config/`** — shared types (`ModelParams`, `InputVars`, `OutputVars`, `ErrorVars`, `AnalysisResults`) and constants (default batch sizes, optimizer iterations).
 
 - **`pkg/core/`** — the heart of the system:
   - `DataPoint` / `DataSet` — data structures; `Fix()` fills missing fields with defaults, `ToMSecs()` converts seconds to ms.
   - `Model()` — the forward model: given `InputVars` + `ModelParams`, calls `queue-analysis` and returns predicted `OutputVars`.
-  - `LossFunction()` — computes mean weighted deviation error across a dataset.
+  - `LossFunction()` — computes the mean per-point sum of squared relative errors in TTFT and ITL across a dataset.
   - `Optimizer` — wraps `gonum/optimize.Minimize` (explicitly Nelder-Mead) to minimize `LossFunction`. Variables are scaled by their initial values before optimization so the simplex is well-conditioned across parameters of different magnitudes.
   - `Analyzer` — runs `LossFunction` with fixed parameters (no optimization) to score a trained model.
 
@@ -67,7 +67,7 @@ benchmark data (JSON/CSV/HTML)
 
 - **`pkg/service/`** — Gin HTTP server exposing `POST /train`. Accepts a `DataSet` JSON body, runs the optimizer with hard-coded initial parameters `{Alpha:1, Beta:0, Gamma:0}`, returns `OptimizationResult`.
 
-- **`pkg/utils/`** — conversions between `ModelParams` struct ↔ `[]float64` (required by gonum), and `DeviationError` weighted as `(errTTFT * 0.5 + errITL) / 1.5`.
+- **`pkg/utils/`** — conversions between `ModelParams` struct ↔ `[]float64` (required by gonum), and `DeviationError` returning `(rel_TTFT)^2 + (rel_ITL)^2` per point. The relative form is scale-free, so TTFT and ITL enter the loss on equal footing despite TTFT typically being an order of magnitude larger in absolute terms.
 
 ### Key design decisions
 
