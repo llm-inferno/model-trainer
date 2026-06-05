@@ -1,19 +1,18 @@
 GuideLLM data not in json output format, Trying CSV ...
-Optimization completed. Objective value: 0.573291
+Optimization completed. Objective value: 0.000518
   rps 	 inToken 	 outToken 	 TTFTMeas 	 TTFTPred 	 ITLMeas 	 ITLPred 	
-  0.03 	   827.09 	  4410.27 	    38.65 	    37.12 	     6.90 	     6.61 	 
-  0.14 	  1094.02 	  4120.72 	    49.27 	    46.33 	     7.68 	     7.30 	 
-  0.24 	  1028.87 	  4034.60 	    46.58 	    45.83 	     8.49 	     8.00 	 
-  0.32 	  1068.57 	  4148.97 	    49.96 	    48.98 	     9.47 	     9.00 	 
-  0.42 	  1048.11 	  4047.03 	    50.23 	    50.23 	    10.29 	     9.92 	 
-  0.51 	  1042.52 	  4159.80 	    53.00 	    53.43 	    11.69 	    11.60 	 
-  0.59 	  1037.85 	  3984.76 	    54.23 	    55.23 	    12.71 	    12.57 	 
-  0.65 	  1030.97 	  4049.44 	    56.64 	    58.31 	    14.21 	    14.21 	 
+  0.03 	   827.09 	  4410.27 	    38.65 	    38.15 	     6.90 	     7.05 	 
+  0.14 	  1094.02 	  4120.72 	    49.27 	    47.38 	     7.68 	     7.73 	 
+  0.24 	  1028.87 	  4034.60 	    46.58 	    46.82 	     8.49 	     8.40 	 
+  0.32 	  1068.57 	  4148.97 	    49.96 	    49.87 	     9.47 	     9.35 	 
+  0.42 	  1048.11 	  4047.03 	    50.23 	    50.99 	    10.29 	    10.21 	 
+  0.51 	  1042.52 	  4159.80 	    53.00 	    53.85 	    11.69 	    11.72 	 
+  0.59 	  1037.85 	  3984.76 	    54.23 	    55.44 	    12.71 	    12.58 	 
 Optimization completed successfully!
 -------------------------------
 Name of data set: GuideLLM CSV benchmark data
-Number of data points: 8
-Initial parameters: {"alpha":6,"beta":0,"gamma":0}
+Number of data points: 7
+Initial parameters: {"alpha":1,"beta":0.01,"gamma":0.0001}
 Estimated parameters:
-{"OptimizedParms":{"alpha":6.008824931174647,"beta":0.029330377908660193,"gamma":0.00005602938594942388},"AnalysisResults":{"avgErrTTFT":1.1657774448394775,"avgErrITL":0.27704726136593594,"avgErrWeighted":0.5732906558571165}}
-Summary: alpha: 6.008825, beta: 0.029330378, gamma: 0.000056029386, errTTFT: 1.165777, errITL: 0.277047, errWeightedAvg: 0.573291
+{"OptimizedParms":{"alpha":6.480695798351704,"beta":0.02948341116556913,"gamma":0.00005112415054539576},"AnalysisResults":{"avgErrTTFT":0.7938605717250279,"avgErrITL":0.09340840812042231,"avgErrWeighted":0.0005184220249174696}}
+Summary: alpha: 6.480696, beta: 0.029483411, gamma: 0.000051124151, errTTFT: 0.793861, errITL: 0.093408, errWeightedAvg: 0.000518

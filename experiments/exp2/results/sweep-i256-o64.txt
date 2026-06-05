@@ -1,20 +1,19 @@
 Successfully read GuideLLM HTML data
 =============================================================
-Optimization completed. Objective value: 2.453561
+Optimization completed. Objective value: 0.032930
   rps 	 inToken 	 outToken 	 TTFTMeas 	 TTFTPred 	 ITLMeas 	 ITLPred 	
-  1.40 	   275.30 	    63.95 	    22.16 	    30.74 	    11.06 	    10.43 	 
-  8.59 	   275.30 	    63.95 	    38.76 	    32.86 	    11.76 	    11.49 	 
- 15.78 	   275.30 	    63.95 	    39.50 	    35.45 	    12.39 	    12.79 	 
- 22.97 	   275.30 	    63.95 	    40.91 	    38.70 	    13.38 	    14.41 	 
- 30.15 	   275.30 	    63.95 	    42.68 	    42.87 	    14.49 	    16.50 	 
- 37.34 	   275.30 	    63.95 	    50.65 	    48.44 	    16.33 	    19.28 	 
- 44.51 	   275.30 	    63.95 	    56.29 	    56.23 	    19.66 	    23.18 	 
- 51.66 	   275.30 	    63.95 	    81.64 	    67.87 	    28.85 	    29.00 	 
+  1.40 	   275.30 	    63.95 	    22.16 	    29.57 	    11.06 	    10.10 	 
+  8.59 	   275.30 	    63.95 	    38.76 	    31.51 	    11.76 	    11.07 	 
+ 15.78 	   275.30 	    63.95 	    39.50 	    33.85 	    12.39 	    12.24 	 
+ 22.97 	   275.30 	    63.95 	    40.91 	    36.74 	    13.38 	    13.69 	 
+ 30.15 	   275.30 	    63.95 	    42.68 	    40.39 	    14.49 	    15.51 	 
+ 37.34 	   275.30 	    63.95 	    50.65 	    45.15 	    16.33 	    17.89 	 
+ 44.51 	   275.30 	    63.95 	    56.29 	    51.60 	    19.66 	    21.11 	 
 Optimization completed successfully!
 -------------------------------
 Name of data set: GuideLLM HTML benchmark data
-Number of data points: 8
-Initial parameters: {"alpha":10,"beta":0,"gamma":0}
+Number of data points: 7
+Initial parameters: {"alpha":1,"beta":0.01,"gamma":0.0001}
 Estimated parameters:
-{"OptimizedParms":{"alpha":10.014960118060806,"beta":0.036705603296284466,"gamma":4.382236244991979e-11},"AnalysisResults":{"avgErrTTFT":4.6212804317474365,"avgErrITL":1.3697010242155288,"avgErrWeighted":2.453560826726165}}
-Summary: alpha: 10.014960, beta: 0.036705603, gamma: 0.000000000044, errTTFT: 4.621280, errITL: 1.369701, errWeightedAvg: 2.453561
+{"OptimizedParms":{"alpha":9.712085363836835,"beta":0.0348359305318114,"gamma":1.788154942533621e-9},"AnalysisResults":{"avgErrTTFT":5.277857371738979,"avgErrITL":0.8780526739307325,"avgErrWeighted":0.03292981776595495}}
+Summary: alpha: 9.712085, beta: 0.034835931, gamma: 0.000000001788, errTTFT: 5.277857, errITL: 0.878053, errWeightedAvg: 0.032930
