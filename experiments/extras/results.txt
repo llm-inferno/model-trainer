@@ -1,0 +1,156 @@
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i1024-o1024.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i1024-o256.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i1024-o4096.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i1024-o64.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i256-o1024.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i256-o256.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i256-o4096.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i256-o64.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i4096-o1024.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i4096-o256.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i4096-o4096.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i4096-o64.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i64-o1024.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i64-o256.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i64-o4096.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: /Users/tantawi/Projects/llm-inferno/model-trainer/experiments/exp3/data/sweep-i64-o64.json
+GuideLLM data not in json output format, Trying CSV ...
+Processing file: 
+open : no such file or directory
+Optimization completed. Objective value: 2.694585
+  rps 	 inToken 	 outToken 	 TTFTMeas 	 TTFTPred 	 ITLMeas 	 ITLPred 	
+  0.15 	   960.63 	   973.89 	    36.31 	    34.50 	     6.76 	     6.82 	 
+  0.86 	  1028.16 	  1049.14 	    44.54 	    37.40 	     7.62 	     7.53 	 
+  1.56 	  1014.27 	  1017.94 	    42.86 	    38.59 	     8.40 	     8.28 	 
+  2.25 	  1032.21 	  1033.33 	    44.31 	    41.10 	     9.30 	     9.34 	 
+  2.94 	  1034.93 	  1012.16 	    45.42 	    43.48 	    10.25 	    10.50 	 
+  3.63 	  1037.46 	  1039.26 	    47.84 	    47.29 	    12.07 	    12.38 	 
+  4.31 	  1019.04 	  1025.21 	    49.99 	    50.66 	    13.63 	    14.26 	 
+  0.58 	   999.50 	   253.64 	    34.73 	    35.49 	     6.68 	     6.90 	 
+  2.95 	  1026.28 	   255.33 	    39.22 	    37.71 	     7.59 	     7.72 	 
+  5.31 	  1027.22 	   257.93 	    39.69 	    39.81 	     8.63 	     8.76 	 
+  7.68 	  1027.59 	   258.27 	    40.46 	    42.51 	     9.66 	    10.11 	 
+ 10.04 	  1033.52 	   257.96 	    41.81 	    46.36 	    11.00 	    11.96 	 
+ 12.38 	  1028.30 	   257.32 	    43.55 	    51.30 	    12.91 	    14.49 	 
+ 14.71 	  1030.81 	   257.23 	    46.51 	    59.40 	    15.72 	    18.52 	 
+  0.03 	   827.09 	  4410.27 	    38.65 	    31.84 	     6.90 	     7.02 	 
+  0.14 	  1094.02 	  4120.72 	    49.27 	    38.92 	     7.68 	     7.64 	 
+  0.24 	  1028.87 	  4034.60 	    46.58 	    38.72 	     8.49 	     8.25 	 
+  0.32 	  1068.57 	  4148.97 	    49.96 	    41.26 	     9.47 	     9.09 	 
+  0.42 	  1048.11 	  4047.03 	    50.23 	    42.31 	    10.29 	     9.83 	 
+  0.51 	  1042.52 	  4159.80 	    53.00 	    44.76 	    11.69 	    11.12 	 
+  0.59 	  1037.85 	  3984.76 	    54.23 	    46.06 	    12.71 	    11.82 	 
+  2.18 	  1027.28 	    63.41 	    34.26 	    36.96 	     6.77 	     7.46 	 
+  5.99 	  1023.43 	    64.10 	    37.51 	    38.79 	     7.76 	     8.42 	 
+  9.79 	  1030.68 	    64.42 	    37.51 	    41.48 	     8.72 	     9.68 	 
+ 13.59 	  1027.93 	    64.53 	    38.11 	    44.71 	    10.02 	    11.33 	 
+ 17.38 	  1026.63 	    64.32 	    39.03 	    49.26 	    11.67 	    13.61 	 
+ 21.17 	  1031.26 	    64.43 	    40.28 	    56.43 	    13.97 	    17.15 	 
+ 24.96 	  1029.54 	    64.44 	    42.08 	    67.75 	    17.40 	    22.83 	 
+  0.15 	   239.85 	   973.89 	    17.90 	    18.49 	     6.75 	     6.68 	 
+  1.43 	   251.25 	  1020.30 	    23.73 	    20.01 	     7.62 	     7.31 	 
+  2.70 	   261.50 	  1028.43 	    24.05 	    21.82 	     8.27 	     8.10 	 
+  3.98 	   257.86 	  1029.87 	    25.46 	    23.65 	     9.07 	     9.06 	 
+  5.23 	   256.00 	  1029.00 	    28.05 	    25.96 	    10.25 	    10.23 	 
+  6.46 	   258.74 	  1029.39 	    31.34 	    29.08 	    11.70 	    11.77 	 
+  7.67 	   256.15 	  1026.44 	    34.86 	    32.84 	    13.37 	    13.67 	 
+  0.56 	   250.66 	   252.15 	    16.20 	    18.71 	     7.06 	     6.65 	 
+  5.96 	   256.23 	   255.93 	    20.77 	    20.12 	     7.62 	     7.30 	 
+ 11.36 	   257.53 	   257.93 	    22.15 	    21.74 	     8.20 	     8.09 	 
+ 16.78 	   257.00 	   256.93 	    24.15 	    23.66 	     9.06 	     9.06 	 
+ 22.15 	   257.62 	   257.98 	    26.08 	    26.19 	    10.10 	    10.32 	 
+ 27.52 	   257.08 	   257.36 	    28.63 	    29.38 	    11.55 	    11.92 	 
+ 32.83 	   256.92 	   257.08 	    32.38 	    33.73 	    13.50 	    14.10 	 
+  0.03 	   206.45 	  4410.27 	    20.87 	    18.09 	     6.78 	     6.92 	 
+  0.16 	   270.47 	  4193.09 	    28.35 	    20.65 	     7.46 	     7.50 	 
+  0.29 	   255.35 	  4024.63 	    31.57 	    21.43 	     8.31 	     8.05 	 
+  0.41 	   270.40 	  4143.72 	    31.39 	    23.45 	     9.12 	     8.90 	 
+  0.54 	   254.60 	  4104.17 	    32.29 	    24.80 	    10.12 	     9.74 	 
+  0.65 	   257.28 	  4073.98 	    34.45 	    26.61 	    11.03 	    10.62 	 
+  0.75 	   263.56 	  4037.34 	    35.58 	    28.57 	    12.31 	    11.53 	 
+  2.35 	   258.20 	    63.27 	    16.47 	    19.07 	     6.54 	     6.78 	 
+ 14.92 	   257.37 	    64.30 	    20.00 	    20.61 	     7.28 	     7.56 	 
+ 27.48 	   257.09 	    64.48 	    20.71 	    22.57 	     7.94 	     8.54 	 
+ 40.03 	   257.34 	    64.42 	    21.51 	    25.12 	     8.67 	     9.82 	 
+ 52.58 	   257.41 	    64.42 	    22.91 	    28.55 	     9.74 	    11.53 	 
+ 65.12 	   257.01 	    64.36 	    24.44 	    33.33 	    11.15 	    13.93 	 
+ 77.64 	   257.18 	    64.44 	    30.96 	    40.73 	    14.23 	    17.62 	 
+  0.14 	  3773.16 	   981.76 	   103.76 	    96.99 	     7.00 	     7.38 	 
+  0.41 	  4153.06 	  1049.78 	   124.77 	   107.19 	     8.02 	     8.33 	 
+  0.68 	  4138.22 	  1025.22 	   126.89 	   108.82 	     9.15 	     9.31 	 
+  0.94 	  4139.04 	  1037.73 	   125.48 	   111.52 	    10.47 	    10.65 	 
+  1.20 	  4030.76 	  1005.02 	   122.96 	   111.76 	    11.79 	    11.95 	 
+  1.46 	  4120.90 	  1033.00 	   131.55 	   119.00 	    14.20 	    14.59 	 
+  1.70 	  4104.12 	  1010.26 	   131.68 	   123.70 	    16.46 	    17.12 	 
+  0.54 	  4001.26 	   251.60 	   108.65 	   102.89 	     6.89 	     7.95 	 
+  1.18 	  4084.83 	   261.47 	   117.85 	   106.69 	     8.02 	     8.93 	 
+  1.81 	  4122.14 	   253.22 	   117.78 	   109.93 	     9.22 	    10.15 	 
+  2.44 	  4054.31 	   260.10 	   115.73 	   111.45 	    10.84 	    11.65 	 
+  3.07 	  4144.60 	   257.26 	   122.88 	   118.03 	    12.81 	    13.96 	 
+  3.70 	  4142.44 	   259.57 	   124.24 	   124.18 	    15.51 	    17.06 	 
+  4.31 	  4090.19 	   255.14 	   124.11 	   130.94 	    19.16 	    21.01 	 
+  0.03 	  3308.45 	  4410.27 	    89.55 	    86.85 	     6.95 	     7.43 	 
+  0.08 	  4153.93 	  3972.52 	   125.61 	   106.68 	     7.63 	     8.11 	 
+  0.14 	  4023.51 	  4058.55 	   117.35 	   105.39 	     8.44 	     8.89 	 
+  0.18 	  4346.92 	  3997.56 	   132.02 	   114.22 	     9.50 	     9.77 	 
+  0.23 	  4260.18 	  4306.02 	   136.13 	   115.40 	    11.01 	    11.32 	 
+  0.28 	  4130.44 	  4040.95 	   129.25 	   113.55 	    11.61 	    11.80 	 
+  0.33 	  4067.53 	  4103.18 	   128.41 	   115.30 	    13.36 	    13.36 	 
+  1.85 	  4096.60 	    63.54 	   109.37 	   109.37 	     6.89 	    10.68 	 
+  2.66 	  4104.50 	    64.17 	   114.22 	   112.38 	     8.67 	    12.09 	 
+  3.47 	  4159.88 	    64.72 	   117.26 	   117.49 	    10.03 	    14.04 	 
+  4.29 	  4091.45 	    64.53 	   114.67 	   120.29 	    11.70 	    16.18 	 
+  5.10 	  4082.93 	    64.25 	   113.81 	   126.37 	    14.12 	    19.31 	 
+  5.90 	  4170.06 	    64.72 	   120.30 	   139.19 	    18.63 	    24.78 	 
+  6.71 	  4081.74 	    64.23 	   118.84 	   149.18 	    23.89 	    30.74 	 
+  0.15 	    59.42 	   975.50 	    14.84 	    14.48 	     7.00 	     6.64 	 
+  1.65 	    65.42 	  1018.06 	    21.56 	    15.78 	     7.81 	     7.22 	 
+  3.15 	    65.10 	  1040.90 	    21.69 	    17.25 	     8.57 	     7.96 	 
+  4.63 	    64.02 	  1026.68 	    23.24 	    18.82 	     9.35 	     8.76 	 
+  6.10 	    64.45 	  1022.43 	    25.56 	    20.81 	    10.38 	     9.75 	 
+  7.58 	    64.42 	  1028.75 	    28.51 	    23.49 	    11.67 	    11.09 	 
+  9.02 	    64.81 	  1029.86 	    32.89 	    26.85 	    13.31 	    12.76 	 
+  0.60 	    62.95 	   253.69 	    14.96 	    14.51 	     6.57 	     6.60 	 
+  8.12 	    64.45 	   256.89 	    18.42 	    15.57 	     7.27 	     7.11 	 
+ 15.64 	    64.60 	   257.86 	    19.44 	    16.77 	     7.72 	     7.71 	 
+ 23.16 	    64.40 	   257.44 	    21.13 	    18.18 	     8.46 	     8.42 	 
+ 30.63 	    64.56 	   257.29 	    23.40 	    19.88 	     9.43 	     9.26 	 
+ 38.13 	    64.51 	   257.52 	    26.33 	    21.96 	    10.66 	    10.31 	 
+ 45.55 	    64.55 	   257.39 	    31.27 	    24.53 	    12.45 	    11.59 	 
+  0.03 	    51.45 	  4410.27 	    18.87 	    14.66 	     6.68 	     6.90 	 
+  0.17 	    65.58 	  3997.07 	    26.51 	    15.93 	     7.35 	     7.37 	 
+  0.31 	    64.29 	  4057.06 	    27.21 	    17.20 	     8.24 	     8.02 	 
+  0.46 	    66.22 	  4195.52 	    30.93 	    19.13 	     9.19 	     8.97 	 
+  0.58 	    64.88 	  4214.90 	    31.81 	    20.96 	    10.33 	     9.90 	 
+  0.70 	    64.85 	  4017.51 	    32.00 	    21.91 	    11.07 	    10.37 	 
+  0.81 	    64.45 	  4110.23 	    34.29 	    24.55 	    12.69 	    11.70 	 
+  2.26 	    64.52 	    63.16 	    13.68 	    14.57 	     6.89 	     6.61 	 
+ 27.16 	    64.47 	    64.46 	    18.05 	    15.70 	     7.52 	     7.18 	 
+ 52.06 	    64.54 	    64.42 	    19.08 	    17.05 	     8.07 	     7.85 	 
+ 76.95 	    64.46 	    64.39 	    20.47 	    18.66 	     8.69 	     8.66 	 
+101.85 	    64.53 	    64.43 	    22.01 	    20.66 	     9.39 	     9.66 	 
+126.73 	    64.50 	    64.40 	    24.37 	    23.16 	    10.35 	    10.91 	 
+151.83 	    64.48 	    64.43 	    28.43 	    26.45 	    12.17 	    12.55 	 
+Optimization completed successfully!
+-------------------------------
+Name of data set: GuideLLM multiple data sets
+Number of data points: 112
+Initial parameters: {"alpha":1,"beta":0.01,"gamma":0.0001}
+Estimated parameters:
+{"OptimizedParms":{"alpha":6.492619023082466,"beta":0.021891312502805592,"gamma":0.000049577735924112736},"AnalysisResults":{"avgErrTTFT":6.350605555943081,"avgErrITL":0.8665752794315319,"avgErrWeighted":2.6945853716020483}}
+Summary: alpha: 6.492619, beta: 0.021891313, gamma: 0.000049577736, errTTFT: 6.350606, errITL: 0.866575, errWeightedAvg: 2.694585
